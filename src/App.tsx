@@ -46,14 +46,16 @@ export default function App() {
 
   // Track scrolling to toggle navbar background
   useEffect(() => {
+    let lastKnownScroll = false;
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      const isPast = window.scrollY > 50;
+      if (isPast !== lastKnownScroll) {
+        lastKnownScroll = isPast;
+        setIsScrolled(isPast);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -333,7 +335,7 @@ export default function App() {
               <Star className="w-5 h-5 fill-current" />
               <Star className="w-5 h-5 fill-current" />
               <Star className="w-5 h-5 fill-current" />
-              <span className="text-xs text-white/80 font-medium ml-2 bg-white/10 px-2.5 py-0.5 rounded-full">Ocena 9.8 / 10 w Booking</span>
+              <span className="text-xs text-white/80 font-medium ml-2 bg-white/10 px-2.5 py-0.5 rounded-full">Ocena 8.7 / 10 w Booking</span>
             </div>
           </div>
 
@@ -423,6 +425,7 @@ export default function App() {
                 src="https://i.ibb.co/XrsvZhGn/688073763-122095754583311429-3031027201350845452-n.jpg" 
                 alt="Wschód słońca nad jeziorem w Gościńcu Zielony Domek" 
                 referrerPolicy="no-referrer"
+                loading="lazy"
                 className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-102"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/50 to-transparent" />
@@ -582,13 +585,14 @@ export default function App() {
               src={GALLERY_IMAGES[0].url} 
               alt={GALLERY_IMAGES[0].title}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Hover Indicator Icon */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/40 backdrop-blur-xs">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/45">
+              <div className="p-4 bg-white/15 rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                 <Eye className="w-6 h-6" />
               </div>
             </div>
@@ -603,13 +607,14 @@ export default function App() {
               src={GALLERY_IMAGES[1].url} 
               alt={GALLERY_IMAGES[1].title}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Hover Indicator Icon */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/40 backdrop-blur-xs">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/45">
+              <div className="p-4 bg-white/15 rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                 <Eye className="w-6 h-6" />
               </div>
             </div>
@@ -624,13 +629,14 @@ export default function App() {
               src={GALLERY_IMAGES[2].url} 
               alt={GALLERY_IMAGES[2].title}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Hover Indicator Icon */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/40 backdrop-blur-xs">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/45">
+              <div className="p-4 bg-white/15 rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                 <Eye className="w-6 h-6" />
               </div>
             </div>
@@ -645,13 +651,14 @@ export default function App() {
               src={GALLERY_IMAGES[3].url} 
               alt={GALLERY_IMAGES[3].title}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Hover Indicator Icon */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/40 backdrop-blur-xs">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/45">
+              <div className="p-4 bg-white/15 rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                 <Eye className="w-6 h-6" />
               </div>
             </div>
@@ -666,13 +673,14 @@ export default function App() {
               src={GALLERY_IMAGES[4].url} 
               alt={GALLERY_IMAGES[4].title}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Hover Indicator Icon */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/40 backdrop-blur-xs">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/45">
+              <div className="p-4 bg-white/15 rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                 <Eye className="w-6 h-6" />
               </div>
             </div>
@@ -687,13 +695,14 @@ export default function App() {
               src={GALLERY_IMAGES[5].url} 
               alt={GALLERY_IMAGES[5].title}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Hover Indicator Icon */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/40 backdrop-blur-xs">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/45">
+              <div className="p-4 bg-white/15 rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                 <Eye className="w-6 h-6" />
               </div>
             </div>
@@ -708,13 +717,14 @@ export default function App() {
               src={GALLERY_IMAGES[6].url} 
               alt={GALLERY_IMAGES[6].title}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Hover Indicator Icon */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/40 backdrop-blur-xs">
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-forest-dark/45">
+              <div className="p-4 bg-white/15 rounded-full text-gold border border-gold/35 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                 <Eye className="w-6 h-6" />
               </div>
             </div>
@@ -734,11 +744,7 @@ export default function App() {
             <h2 className="font-serif text-3xl md:text-5xl font-medium tracking-tight text-forest mb-4">
               Prawdziwe mazurskie wspomnienia
             </h2>
-            <div className="flex justify-center items-center gap-1.5 text-gold my-4">
-              <span className="text-sm font-semibold tracking-wide text-charcoal/80 uppercase font-sans mr-2">Średnia ocena:</span>
-              <Star className="w-4.5 h-4.5 fill-current" />
-              <strong className="text-base text-forest-dark font-bold font-sans">4.9 / 5</strong>
-            </div>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
