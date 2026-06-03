@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  
+  --color-forest: #2D4A2D;
+  --color-forest-dark: #1A301A;
+  --color-forest-light: #446544;
+  --color-cream: #F5F0E8;
+  --color-cream-dark: #EADEC9;
+  --color-cream-light: #FAF8F5;
+  --color-gold: #C9A96E;
+  --color-gold-light: #DFCDAA;
+  --color-gold-dark: #A7834C;
+  --color-charcoal: #1E251E;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-forest-dark);
+}
+
+/* Custom fade-in on scroll animation helpers if fallback needed */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
